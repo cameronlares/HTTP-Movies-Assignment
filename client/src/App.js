@@ -4,8 +4,12 @@ import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
+import UpdateMovie from "./components/UpdateMovie";
+import { useLocation, useParams, useHistory } from "react-router-dom";
+
 
 const App = () => {
+  const location = useLocation();
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
 
@@ -22,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, [location]);
 
   return (
     <>
@@ -31,7 +35,9 @@ const App = () => {
       <Route exact path="/">
         <MovieList movies={movieList} />
       </Route>
+<Route path ="/update-movie/:id" component={UpdateMovie}>
 
+</Route>
       <Route path="/movies/:id">
         <Movie addToSavedList={addToSavedList} />
       </Route>

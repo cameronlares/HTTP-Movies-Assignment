@@ -35,23 +35,24 @@ const UpdateMovie = props => {
         .then(res => setItem(res.data))
         .catch(err => console.log(err));
     }
-  }, []);
+  }, [location]);
 
 
 
   const changeHandler = e => {
     e.persist();
-    let value = e.target.value;
+    
  
     setItem({
         ...item,
-        [e.target.name]: value
+        [e.target.name]: [e.target.value]
       });
     
     }
 
     const handleSubmit = e => {
         e.preventDefault();
+        console.log(item)
         // make a PUT request to edit the item
         axios
           .put(`http://localhost:5000/api/movies/${item.id}`, item)

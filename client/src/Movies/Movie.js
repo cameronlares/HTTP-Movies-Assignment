@@ -28,7 +28,7 @@ function Movie({ addToSavedList }) {
 
   const deleteMov = () => {
     axios
-      .delete(`http://localhost:5000/api/movies/${params.id}`)
+      .delete(`http://localhost:5000/api/movies/${params.id.data}`)
       .then((res) => {
         history.push("/");
         setMovie(res.data);

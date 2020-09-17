@@ -5,8 +5,11 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
 import UpdateMovie from "./components/UpdateMovie";
+import { useLocation, useParams, useHistory } from "react-router-dom";
+
 
 const App = () => {
+  const location = useLocation();
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
 
@@ -23,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, [location]);
 
   return (
     <>
